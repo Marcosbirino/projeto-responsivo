@@ -9,35 +9,58 @@
     color:  #5D5D7D;
 }
 
-
-.wrapper {
-    height: 100vh;
-    width: 100vw;
+ .wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden; /* Evita barra de rolagem se a imagem sair um pouco */
+}
    
+
+
+header {
+    display: flex;
+    justify-content: space-around; /* Espalha os links */
+    padding: 40px 20px;
+    width: 100%;
 }
 
+header a {
+    margin: 0; /* Remove margens fixas para o flex cuidar do espaço */
+}
+
+
 .container-left {
-    display: inline-block;
-    width: 60%;
-    padding-left: 136px;
-    margin-top: 10%;
+    
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%; /* Ajuste conforme necessário */
+    
+    
 }
 
 
 .container-right {
-    display: inline-block;
+    width: 40%;
     background-color: rgba(53, 93, 125, 0.16);
-    height: 142vh;
-    width: 42%;
-    position: absolute;
+    position: relative; /* Importante para a imagem se basear aqui */
+    display: flex;
+    flex-direction: column;
+   
 }
 
-img {
-    position: relative;
-    margin-top: 12%;
-    right: 10%;
-    height: 75vh;
+
+    img {
+        position: absolute;
+        height: 70vh;       /* Diminuí de 80vh para 70vh para ela ficar menor */
+        bottom: 10px;          /* Em vez de bottom, usamos top para dar distância do topo */
+        left: -60px;        /* Ajuste esse valor para controlar a sobreposição lateral */
 }
+
+  
+
 
 h1 {
     font-size: 70px;
@@ -102,102 +125,48 @@ a:active {
 }
 
 
-header {
-    margin: 24px 0 0 57px;
-}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
+    .wrapper {
+        flex-direction: column; /* Coloca uma section em cima da outra */
+        overflow-x: hidden;
+    }
+
     .container-left {
-            display: static;
-            width: 100%;
-            height: 50%;
-            padding: 0;
-            margin: 0;
+        width: 100%;
+        padding: 40px 20px;
+        align-items: center; /* Centraliza o texto e botão */
+        text-align: center;
     }
 
     .container-right {
-            display: static;
-            position: static;
-            width: 100%;
-            height: 50%;
-            padding: 0;
-            margin: 0;
-         
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px;
     }
 
-      img {
-        position: absolute;
-        height: 40%;
-        margin:  50px 50px 50px 50px;
-        height: 34%;
-        width:  50%;
-        left: 40px;
-        
+    header {
+        display: none; /* Geralmente escondemos o menu ou usamos um ícone no mobile */
     }
 
-     header {
-        display: none;
-    }
-
-     h1 {
-        font-size: 36px;
-        line-height: 52px;
-        width: auto;
-        margin: 58px 50px 0 50px;
-        text-align: center; 
-    }
-
-    p {
-        margin:15px 40px;
-        width: auto;
-        text-align: center;
-        font-size: 14px;
-        line-height: 24px;
-    }
-
-    button {
-        margin: 0 auto;
+    img {
+        position: relative;
+        left: 0;
+        width: 70%;      /* Diminuí um pouco a largura no mobile também */
+        margin: 40px auto 0; /* O primeiro valor (40px) cria o espaço no topo */
         display: block;
-        margin-top: 50px;
-    }
-}
-
-
-@media screen and (max-width: 320px) {
-    .container-left {
-            height: 70%;
-           
-    }
-
-     button {
-        margin: 0 auto;
-        display: block;
-        width: 70%;
-        margin-bottom: 20px;
-        height: 50px;
-        cursor: pointer;
+        height: auto;
     }
 
     h1 {
-        margin-top: 50px;
-        font-weight: 600;
-        font-size: 20px;
-        letter-spacing: 12%;
+        font-size: 40px;
+        line-height: 50px;
+        width: 100%;
     }
 
     p {
-        margin:10px 20px;
-        width: auto;
-        text-align: center;
-        font-size: 50%;
-        line-height: 12px;
+        font-size: 18px;
+        line-height: 30px;
+        width: 100%;
     }
-
 }
-
-
-
-
-
-
- 
